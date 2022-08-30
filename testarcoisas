@@ -1,0 +1,13 @@
+AIzaSyD7I_N0lCFJnzG1rUbl44J0mnEiNiqO_ds
+AIzaSyCvMyF6MBl8oQdS8zBvsdvXIRx8VY8FpUs
+useEffect(()=>{
+    (async function(){
+      const {status, permitions} = await Permissions.askAsync(Permissions.LOCATION);
+      if(status === 'granted'){
+        let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
+        console.log(location);
+      }else{
+        throw new Error('Permissão de localização negada');
+      }
+    })()
+  },[]);
